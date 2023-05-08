@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface VentaService {
     public List<Venta> listar();
 
+
     public Venta guardar(Venta venta);
 
     public Venta actualizar(Venta venta);

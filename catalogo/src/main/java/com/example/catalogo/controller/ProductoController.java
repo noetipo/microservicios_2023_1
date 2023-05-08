@@ -3,6 +3,7 @@ package com.example.catalogo.controller;
 import com.example.catalogo.entity.Producto;
 import com.example.catalogo.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +25,9 @@ public class ProductoController {
     }
 
     @GetMapping("/{id}")
-    public Producto buscarPorId(@PathVariable(required = true) Integer id) {
-        return productoService.listarPorId(id).get();
+
+    public ResponseEntity<Producto> listById(@PathVariable(required = true) Integer id) {
+        return ResponseEntity.ok().body(productoService.listarPorId(id).get());
     }
     @PutMapping()
     public Producto actualizar(@RequestBody Producto producto){
