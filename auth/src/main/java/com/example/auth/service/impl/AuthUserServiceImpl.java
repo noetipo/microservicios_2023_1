@@ -49,9 +49,11 @@ public class AuthUserServiceImpl implements AuthUserService {
 
     @Override
     public TokenDto validate(String token) {
+        System.out.println("===validate=====");
+        System.out.println(jwtProvider.validate(token));
         if (!jwtProvider.validate(token))
             return null;
-        String username = jwtProvider.getUserNameToken(token);
+        String username = jwtProvider.getUserNameFromToken(token);
         if (!authRepository.findByUserName(username).isPresent())
             return null;
 
