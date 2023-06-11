@@ -27,13 +27,17 @@ spring:
           uri: lb://catalogo-service
           predicates:
             - Path=/categoria/**,/producto/**
+          filters:
+            - AuthFilter
         - id: cliente-service
           uri: lb://cliente-service
           predicates:
             - Path=/cliente/**
-          #filters:
-          #  - AuthFilter
+          filters:
+            - AuthFilter
         - id: venta-service
           uri: lb://venta-service
           predicates:
             - Path=/venta/**
+          filters:
+            - AuthFilter
